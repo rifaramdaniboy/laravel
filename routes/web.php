@@ -121,5 +121,33 @@ Route::get('/', function () {
         return $query;
         });
 
+        Route::get('data-gaji-1', function() {
+            $data = App\Penggajian::where('agama','=','islam')->get();
+            return $data;
+            });   
+        
+        Route::get('data-gaji-2', function() {
+        $query = App\Penggajian::select('id','nama','agama')
+        ->where('agama','=','islam')->get();
+        return $query;
+        });
+        
+        Route::get('data-gaji/{id}', function($id) {
+            $query = App\Penggajian::find($id);
+            return $query;
+            });
+        
+        Route::get('tambah-data-gaji',function(){
+            $gaji = new App\Penggajian();
+            $gaji->nama='Supratman';
+            $gaji->jabatan='Sekretaris';
+            $gaji->jenis_kelamin='laki-laki';
+            $gaji->alamat='paris';
+            $gaji->total_gaji=500000;
+            $gaji->agama='Islam';
+            $gaji->save();
+            return $gaji;
+        });    
+
 
 
