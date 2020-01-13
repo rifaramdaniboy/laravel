@@ -67,20 +67,20 @@ Route::get('/', function () {
 //     return 'Hallo Nama Saya adalah ' . $nama;
 // });
 
-// Route::get('pesanan/{makan?}/{kopi?}/{harga?}',function($mkn=null,$kp=null,$hrg=null){
-//     if (isset($mkn)) {
-//         echo 'anda memesan makanan : '.$mkn.'<br>';
-//     }
-//     if (isset($kp)) {
-//         echo 'dan : '. $kp.'<br>';
-//     }
-//     if (isset($hrg)) {
-//         echo 'dengan harga : '.$hrg;
-//     }
-//     if ($mkn == null && $kp == null && $hrg == null) {
-//         echo 'Anda belum memesan makan ';
-//     }
-// });
+Route::get('pesanan/{makan?}/{kopi?}/{harga?}',function($mkn=null,$kp=null,$hrg=null){
+    if (isset($mkn)) {
+        echo 'anda memesan makanan : '.$mkn.'<br>';
+    }
+    if (isset($kp)) {
+        echo 'dan : '. $kp.'<br>';
+    }
+    if (isset($hrg)) {
+        echo 'dengan harga : '.$hrg;
+    }
+    if ($mkn == null && $kp == null && $hrg == null) {
+        echo 'Anda belum memesan makan ';
+    }
+});
 
     Route::get('testmodel/',function(){
         $query = App\Post::all() ;
@@ -128,7 +128,7 @@ Route::get('/', function () {
         
         Route::get('data-gaji-2', function() {
         $query = App\Penggajian::select('id','nama','agama')
-        ->where('agama','=','islam')->get();
+        ->where('agama','=','kristen')->get();
         return $query;
         });
         
@@ -147,7 +147,27 @@ Route::get('/', function () {
             $gaji->agama='Islam';
             $gaji->save();
             return $gaji;
-        });    
+        });
+        
+        Route::get('tambah-data',function(){
+            $gaji =new App\Penggajian();
+            $gaji->nama='Mila Cantik';
+            $gaji->jabatan='sekertaris';
+            $gaji->jenis_kelamin='Perempuan';
+            $gaji->alamat='jln citerep';
+            $gaji->total_gaji=600000;
+            $gaji->agama='Islam';
+            $gaji->save();
+            return $gaji;
+        });
+     
+        Route::get('controller-1','Sekolahcontroller@hallo');
+        Route::get('controller-2','Sekolahcontroller@dunia');
+        Route::get('controller-3','Sekolahcontroller@kk');
+        Route::get('controller-4','Sekolahcontroller@teman');
+        Route::get('controller-5','Sekolahcontroller@alam');
+        
+        Route::get('controller-6/{warna?}','Sekolahcontroller@kucing');
 
-
+        Route::get('controller-7/{jenis?}/{harga?}','Sekolahcontroller@pembelian');
 
