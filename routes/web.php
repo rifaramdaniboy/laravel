@@ -170,4 +170,9 @@ Route::get('pesanan/{makan?}/{kopi?}/{harga?}',function($mkn=null,$kp=null,$hrg=
         Route::get('controller-6/{warna?}','Sekolahcontroller@kucing');
 
         Route::get('controller-7/{jenis?}/{harga?}','Sekolahcontroller@pembelian');
-
+        
+        Route::get('book','bookscontroller@index');
+        Route::get('book-create/{jdl}','bookscontroller@create');
+        Route::get('book-show/{id}','bookscontroller@show');
+        Route::get('book-edit/{id}/{jdl}','bookscontroller@edit');
+        Route::get('book-delete/{id}','bookscontroller@delete');

@@ -37,12 +37,22 @@ class Sekolahcontroller extends Controller
     }
 
     public function pembelian($jenis=null,$harga=null)
-    {
-        if ($jenis == null && $harga == null) {
-            return "Silahkan masukan item terlebih dahulu";
+    {  
+        if (isset($jenis)) {
+            echo "Anda Beli : " . $jenis;
+        }if (Isset($harga)) {
+        if ($harga >= 15000) {
+            echo "dengan ukuran JUMBO";
+        }elseif ($harga < 15000 && $harga >= 7500) {
+            echo "dengan ukuran MEDIUM";
+        }elseif ($harga <= 7500) {
+            echo "dengan ukuran SMALL";
         }else {
-            return "anda memesan : " . $jenis;
+            echo "maaf yang anda masukan salah";
         }
-
+        }    
+        if ($jenis == null && $harga == null) {
+            echo "Silahkan masukan item terlebih dahulu";
+        }
     }
 }
