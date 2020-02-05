@@ -53,4 +53,15 @@ class bookscontroller extends Controller
         return $book;
     }
 
+    public function select()
+    {
+        $buku = Book::select('title','publisher','pages','price')->take(3)->get();
+        return $buku;
+    }
+    public function record()
+    {
+        $buku=Book::count();
+        return $buku;
+    }
+
 }

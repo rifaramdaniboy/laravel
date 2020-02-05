@@ -1,9 +1,10 @@
 <?php
 
 namespace App;
+
 use Illuminate\Database\Eloquent\Model;
 
-class Book extends Model
+class Barang extends Model
 {
     //
 }

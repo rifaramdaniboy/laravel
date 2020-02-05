@@ -15,57 +15,57 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// // Route Basic
-// Route::get('about',function() {
-//     return '<h1>Hallo</h1>'
-//     .'selamat datang di webapp saya <br>'
-//     .'laravel, emang keren.';
+// Route Basic
+Route::get('about',function() {
+    return '<h1>Hallo</h1>'
+    .'selamat datang di webapp saya <br>'
+    .'laravel, emang keren.';
 
-// });
-// // Route basic
-// Route::get('profil',function()
-// {
-//     return view('biodata');
-// });
-
-
-// Route::get('nn1',function()
-// {
-//     return view('keluarga');
-// });
-
-// Route::get('nn2',function()
-// {
-//     return view('teman');
-// });
-
-// Route::get('nn3',function()
-// {
-//     return view('jalan');
-// });
-
-// Route::get('nn4',function()
-// {
-//     return view('kota');
-// });
-
-// Route::get('nn5',function()
-// {
-//     return view('sekolah');
-// });
+});
+// Route basic
+Route::get('profil',function()
+{
+    return view('biodata');
+});
 
 
-// Route::get('pesan/{makan}/{minum}/{harga}',function($mkn,$teh,$harga){
-// return 'Makanan Yang Saya Pesan Adalah = '.$mkn.'<br>'
-// .'Minuman yang saya pesan Adalah = '.$teh .'<br>'
-// .'harga nya adalah = '.$harga;
-// });
+Route::get('nn1',function()
+{
+    return view('keluarga');
+});
+
+Route::get('nn2',function()
+{
+    return view('teman');
+});
+
+Route::get('nn3',function()
+{
+    return view('jalan');
+});
+
+Route::get('nn4',function()
+{
+    return view('kota');
+});
+
+Route::get('nn5',function()
+{
+    return view('sekolah');
+});
 
 
-// //route optional parameter
-// Route::get('Hallo/{nama?}',function($nama='Rifa Ramdani'){
-//     return 'Hallo Nama Saya adalah ' . $nama;
-// });
+Route::get('pesan/{makan}/{minum}/{harga}',function($mkn,$teh,$harga){
+return 'Makanan Yang Saya Pesan Adalah = '.$mkn.'<br>'
+.'Minuman yang saya pesan Adalah = '.$teh .'<br>'
+.'harga nya adalah = '.$harga;
+});
+
+
+//route optional parameter
+Route::get('Hallo/{nama?}',function($nama='Rifa Ramdani'){
+    return 'Hallo Nama Saya adalah ' . $nama;
+});
 
 Route::get('pesanan/{makan?}/{kopi?}/{harga?}',function($mkn=null,$kp=null,$hrg=null){
     if (isset($mkn)) {
@@ -160,19 +160,37 @@ Route::get('pesanan/{makan?}/{kopi?}/{harga?}',function($mkn=null,$kp=null,$hrg=
             $gaji->save();
             return $gaji;
         });
-     
+
+        // controller
         Route::get('controller-1','Sekolahcontroller@hallo');
         Route::get('controller-2','Sekolahcontroller@dunia');
         Route::get('controller-3','Sekolahcontroller@kk');
         Route::get('controller-4','Sekolahcontroller@teman');
         Route::get('controller-5','Sekolahcontroller@alam');
-        
         Route::get('controller-6/{warna?}','Sekolahcontroller@kucing');
-
         Route::get('controller-7/{jenis?}/{harga?}','Sekolahcontroller@pembelian');
         
+        // controller BOOK
         Route::get('book','bookscontroller@index');
         Route::get('book-create/{jdl}','bookscontroller@create');
         Route::get('book-show/{id}','bookscontroller@show');
         Route::get('book-edit/{id}/{jdl}','bookscontroller@edit');
         Route::get('book-delete/{id}','bookscontroller@delete');
+        Route::get('book-select','bookscontroller@select');
+        Route::get('book-record','bookscontroller@record');
+
+        //artikel RESORCE
+        Route::get('artikel','CrudController@index');
+        Route::get('artikel/create','CrudController@create');
+        Route::POST('artikel/create','CrudController@store');
+        Route::get('artikel/{id}','CrudController@show');
+        Route::get('artikel/{id}/edit','CrudController@edit');
+        Route::PUT('artikel/create','CrudController@update');
+        Route::DELETE('artikel/{id}','CrudController@destroy');
+        Route::resource('artikel','CrudController');
+
+        // Passing Data
+        Route::get('passing','PracticeController@pass');
+        Route::get('passing1','PracticeController@pass1');
+        Route::get('passing2','PracticeController@pass2');
+        Route::get('passing3','BarangController@index');
