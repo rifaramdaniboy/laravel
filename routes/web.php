@@ -194,3 +194,23 @@ Route::get('pesanan/{makan?}/{kopi?}/{harga?}',function($mkn=null,$kp=null,$hrg=
         Route::get('passing1','PracticeController@pass1');
         Route::get('passing2','PracticeController@pass2');
         Route::get('passing3','BarangController@index');
+
+        // BOOK ROUTE
+        Route::resource('book','BookController');
+        //BARANG ROUTE
+        Route::resource('barang','BarangController');
+
+        Route::get('about',function(){
+             return view('about');
+        });
+
+        //
+        Route::get('home',function(){
+            return view('home');
+        });
+        Route::get('barang','LatihanController@barang');
+            return view('barang');
+        Route::get('buku','LatihanController@buku');
+            return view('buku');
+
+

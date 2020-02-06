@@ -2,20 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Barang;
 use Illuminate\Http\Request;
 
-class BarangController extends Controller
+class LatihanController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function barang()
     {
         $barang = \App\Barang::all()->take(5);
-        return view('barang.index',  compact('barang'));
+        return view('barang.latsolbarang',  compact('barang'));
+    }
+
+    public function buku()
+    {
+        $buku = \App\Book::all();
+        return view('Book.latsolbuku', compact('buku'));
     }
 
     /**
@@ -42,22 +47,21 @@ class BarangController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Barang  $barang
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-            $barang = Barang::findOrFail($id);
-            return view('barang.show',compact('barang'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Barang  $barang
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Barang $barang)
+    public function edit($id)
     {
         //
     }
@@ -66,10 +70,10 @@ class BarangController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Barang  $barang
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Barang $barang)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -77,10 +81,10 @@ class BarangController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Barang  $barang
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Barang $barang)
+    public function destroy($id)
     {
         //
     }
